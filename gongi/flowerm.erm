@@ -12,7 +12,7 @@
 	<category_index>0</category_index>
 	<zoom>1.0</zoom>
 	<x>0</x>
-	<y>0</y>
+	<y>83</y>
 	<default_color>
 		<r>128</r>
 		<g>128</g>
@@ -89,7 +89,7 @@
 				<is_open_after_saved>true</is_open_after_saved>
 			</export_html_setting>
 			<export_image_setting>
-				<output_file_path>C:\Users\leewontae\Desktop\투표기능 (1)\flowerm.png</output_file_path>
+				<output_file_path>C:\Users\leewontae\Desktop\투표기능 (1)\flowerm버전2.png</output_file_path>
 				<category_dir_path></category_dir_path>
 				<with_category_image>true</with_category_image>
 				<is_open_after_saved>true</is_open_after_saved>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2021-08-31 16:23:28</creation_date>
-			<updated_date>2021-09-02 01:22:19</updated_date>
+			<updated_date>2021-09-02 03:33:35</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -484,8 +484,8 @@
 			<args></args>
 			<char_semantics>false</char_semantics>
 			<description></description>
-			<logical_name>항목추가</logical_name>
-			<physical_name>o_listadd</physical_name>
+			<logical_name>항목추가허용체크</logical_name>
+			<physical_name>o_listaddcheck</physical_name>
 			<type>decimal</type>
 		</word>
 		<word>
@@ -1636,11 +1636,11 @@
 		<table>
 			<id>5</id>
 			<height>107</height>
-			<width>182</width>
+			<width>280</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>12</x>
-			<y>600</y>
+			<x>24</x>
+			<y>540</y>
 			<color>
 				<r>128</r>
 				<g>128</g>

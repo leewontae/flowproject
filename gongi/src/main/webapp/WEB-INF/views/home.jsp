@@ -356,7 +356,10 @@ $(function(){
     		width: 550px;
 ">
 
-<div id="allwrap">
+<div id="allwrap" 
+style="
+    height: 50px;
+">
 					<p style="
     position: relative;
     top: 5px;
@@ -374,7 +377,7 @@ $(function(){
 	<div id="wrap" style="
 								    position: relative;
 								    left: 370px;
-								    /* bottom: 35px; */
+								    bottom: 30px;
 								    height: 20px;
 								    width: 50px;
 								">
@@ -398,7 +401,7 @@ $(function(){
 								    width: 50px;
 								">
 				<label class="switch">
- 	 <input type="checkbox">
+ 	 <input type="checkbox" name="o_plural">
  	 <span class="slider round"></span>
 	</label>
 	</div>
@@ -412,26 +415,33 @@ $(function(){
 								    width: 50px;
 								">
 			<label class="switch">
- 	 <input type="checkbox">
+ 	 <input type="checkbox" name="anonymity" >
  	 <span class="slider round"></span>
 	</label>
 	</div>
 	
-	<div> <p>항목 추가 허용</p>
+	<div id="seczonewrap" style="
+    height: 50px;
+">
+	 <input type="hidden" name="seczoneval" >
+	  <p>항목 추가 허용</p>
 	<a href="javascript:shownow()"  style="
     position: relative;
     left: 480px;
     bottom: 50px;
 ">작성자만> </a>
-	
+	<input type="hidden" id="alarmval" name="alarmval" value="1">
 <div id="seczone" style="
     position: relative;
-    left: 550px;
+    left: 650px;
     bottom: 80px;
-"></div></div>
+"
+></div></div>
 	
 	
-	<div> <p>옵션 추가 설정</p>
+	<div style="
+    height: 70px;
+"> <p>옵션 추가 설정</p>
 	<div class="button" style="
     position: relative;
     left: 550px;
@@ -496,7 +506,7 @@ $(function(){
 <button class="close" style="
     background: black;
     position: relative;
-    right: 950px;
+    right: 1000px;
     bottom: 900px;
 ">
   <div class="line"></div>
@@ -662,10 +672,12 @@ $(function(){
 		   
 		    right: 30px;
 		">
-				<input type="date" namd="choicedate" id="datepicker">
-				<input type="time" namd="choicetime" id="datepicker">
-				<input type="radio" id="alarm" name="alarm" value="alarm" >
-				<div id="alerminfozone"></div>
+				<input type="date" name="choicedate" id="choicedate">
+				
+				<input type="time" name="choicetime" id="time">
+				<input type="radio" id="alarm" name="e_alarmcheck" >
+				
+				<div id="alerminfozone" ></div>
 
 			</div>
 				`;
@@ -683,11 +695,12 @@ $(function(){
 		let html =`
 			<select id = "alerminfo" size="1"  style="
 		    position: relative;
-	    left: 255px;
-	    bottom: 25px;
+		    left: 255px;
+		    bottom: 25px;
+		    width: 120px;
 	">
 
-		<option value ="30분전">30분 전 미리 알림</option>
+		<option value ="30">30분 전 미리 알림</option>
 
 		</select>
 		`;
@@ -702,7 +715,7 @@ $(function(){
 			<div id="secbox" style="
 			    background: beige;
 			">
-				<input type="radio" name="one" value="1" checked>작성자만<br>
+				<input type="radio" name="one" value="1" checked class="작성자만">작성자만<br>
 				<input type="radio" name="one" value="2">작성자 + 프로젝트 관리자<br>
 				<input type="radio" name="one" value="3">전체
 			</div>
@@ -711,10 +724,22 @@ $(function(){
 	`; 
 			seczone.append(html);
 
-			
-		
-		
 	}
+	$(document).on('change',"input[name='one']:radio",function(){
+		 //라디오 버튼 값을 가져온다.
+        var one = this.value;
+		 var onehtml="";
+           $("input[name='alarmval']").prop('value',one); 
+       $("#seczonewrap a").empty();
+       if(one ==1){
+    	   onehtml="작성자만"
+       }else if(one==2){
+    	   onehtml="작성자 + 프로젝트 관리자"
+       }else if(one ==3){
+    	   onehtml="전체"
+       }
+       $("#seczonewrap a").append(onehtml);
+	});
 	
 	
 	$(document).ready(function() {

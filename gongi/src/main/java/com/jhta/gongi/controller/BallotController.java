@@ -2,6 +2,8 @@ package com.jhta.gongi.controller;
 
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -10,6 +12,7 @@ import javax.servlet.ServletContext;
 
 import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -37,9 +40,13 @@ public class BallotController {
 	@Autowired BallotService ballotservice; 
 	@Autowired ItemService itemservice; 
 	@PostMapping("/ballot")
-	public String balloradd(String title, String content, @RequestParam(value = "itemname[]") List<String> itemname,  @RequestParam(value = "file1[]") List<MultipartFile> file1, Model model) {
-		System.out.println("title"+title +"content"+content +"itemname"+itemname +"file1"+file1);
+	public String balloradd(String title, String content, @RequestParam(value = "itemname[]") List<String> itemname,  @RequestParam(value = "file1[]") List<MultipartFile> file1, Model model,
+			 String choicedate, String choicetime , String e_alarmcheck , String o_plural, String anonymity , int alarmval) {
+		System.out.println("title : "+title +"content : "+content +"itemname : "+itemname +"file1 : "+file1);
+		System.out.println("@@@@@@@@@@@@@@@@choicedate : "+choicedate +"choicetime : "+choicetime +"e_alarmcheck : "+e_alarmcheck);
+		System.out.println("@@@@@@@@@@@@@@@@o_plural : "+o_plural +"anonymity : "+anonymity +"o_listaddcheck : "+alarmval);
 		
+		// db저장 하면된다. 
 		HashMap<String, Object> ballotmap= new HashMap<String, Object>(); 
 		HashMap<String, Object> itemmap= new HashMap<String, Object>(); 
 		ballotmap.put("b_title", title);
