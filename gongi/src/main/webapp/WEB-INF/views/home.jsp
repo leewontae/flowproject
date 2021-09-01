@@ -20,13 +20,177 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/admin/css/style.css">
 	
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/admin/js/jquery-3.6.0.min.js"></script>
-	
+	  
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	  
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
+
+/*  */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.close {
+  
+  transform-origin: 0 50%;
+  -webkit-transform: translateX(-50%) scale(0);
+  -moz-transform: translateX(-50%) scale(0);
+  -o-transform: translateX(-50%) scale(0);
+  -ms-transform: translateX(-50%) scale(0);
+  transform: translateX(-50%) scale(0);
+  width: 60px;
+  height: 60px;
+  border: none;
+  background: #000;
+  border-radius: 100%;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.close:focus {
+  outline: none;
+}
+
+.close.open {
+  -webkit-animation: scale 0.4s ease-in;
+  -moz-animation: scale 0.4s ease-in;
+  -o-animation: scale 0.4s ease-in;
+  animation: scale 0.4s ease-in;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 1.5s;
+  -moz-webkit-animation-delay: 1.5s;
+  -o-webkit-animation-delay: 1.5s;
+  -webkit-animation-delay: 1.5s;
+  /*-webkit-transform: scale(1) translateX(-50%);*/
+}
+
+@-webkit-keyframes scale {
+  0% { transform: scale(0) translateX(-50%); }
+  80% { transform: scale(1.1) translateX(-50%) }
+  100% { transform: scale(1) translateX(-50%) }
+}
+
+@keyframes scale {
+  0% { transform: scale(0) translateX(-50%); }
+  80% { transform: scale(1.1) translateX(-50%) }
+  100% { transform: scale(1) translateX(-50%) }
+}
+
+.line {
+  position: absolute;
+  width: 35%;
+  height: 1px;
+  background: #fff;
+  left: 50%;
+  -webkit-transform: translateX(-50%) rotate(45deg);
+  -moz-transform: translateX(-50%) rotate(45deg);
+  -o-transform: translateX(-50%) rotate(45deg);
+  -ms-transform: translateX(-50%) rotate(45deg);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.line:nth-child(2) {
+  -webkit-transform: translateX(-50%) rotate(-45deg);
+  -moz-transform: translateX(-50%) rotate(-45deg);
+  -o-transform: translateX(-50%) rotate(-45deg);
+  -ms-transform: translateX(-50%) rotate(-45deg);
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+.button {
+
+  -webkit-transform: translate(-50%, -50%);
+  cursor: pointer;
+  -webkit-transition: top 0.5s ease;
+ 
+} 
+
+span {
+  font-family: 'Fjalla One';
+  font-size: 25px;
+  letter-spacing: 3px;
+ color: black;
+  text-transform: uppercase;
+  
+  transition: 0.5s ease;
+}
+
+.button.active span {
+  display: none;
+}
+
+.button.active {
+  width: 30%;
+  height: 2px;
+  top: -100%;
+  -webkit-transition: width 0.5s ease, height 0.5s ease, top 1s ease 1.2s;
+  -moz-transition: width 0.5s ease, height 0.5s ease, top 1s ease 1.2s;
+  -o-transition: width 0.5s ease, height 0.5s ease, top 1s ease 1.2s;
+  transition: width 0.5s ease, height 0.5s ease, top 1s ease 1.2s;
+}
+
+.button:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 100%;
+  
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  transition: 0.5s ease;
+  -webkit-transition-delay: 0.5s;
+  -moz-transition-delay: 0.5s;
+  -o-transition-delay: 0.5s;
+  transition-delay: 0.5s;
+}
+
+.button.active:before {
+  width: 100%;
+}
+
+.content {
+  position: fixed;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: 1s ease;
+  -moz-transition: 1s ease;
+  -o-transition: 1s ease;
+  transition: 1s ease;
+}
+
+.content.show {
+  top: 0;
+  -webkit-transition: 1s ease 1s;
+  -moz-transition: 1s ease 1s;
+  -o-transition: 1s ease 1s;
+  transition: 1s ease 1s;
+}
+
+
+/*  */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+    appearance: none;
+}
+
 .switch {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 25px;
+  
 }
 
 .switch input { 
@@ -83,6 +247,14 @@ input:checked + .slider:before {
 }
 
 </style>
+
+<script type="text/javascript">
+
+$(function(){
+
+});
+
+</script>
 </head>
 <body>
 	
@@ -183,20 +355,26 @@ input:checked + .slider:before {
 					<hr style="
     		width: 550px;
 ">
+
+<div id="allwrap">
 					<p style="
     position: relative;
     top: 5px;
 ">
+종료일시 추가
+</p>
 
-
-
-종료일시 추가<p>  
-
-			
-<div id="wrap" style="
+ <div id="enddatezone" style="
+    position: relative;
+    left: 130px;
+    bottom: 35px;
+    width: 300px;
+"> 
+<div id="enddatezone2"></div>
+	<div id="wrap" style="
 								    position: relative;
-								    left: 500px;
-								    bottom: 35px;
+								    left: 370px;
+								    /* bottom: 35px; */
 								    height: 20px;
 								    width: 50px;
 								">
@@ -206,8 +384,11 @@ input:checked + .slider:before {
  	 <span class="slider round"></span>
 	</label>
 	
-	</div>					
+	</div></div>  
+
+			
 					
+</div>				
 복수 선택<p> 
 <div id="wrap" style="
 								    position: relative;
@@ -236,37 +417,42 @@ input:checked + .slider:before {
 	</label>
 	</div>
 	
-	항목 추가 허용<p> 
-	<div id="wrap" style="
-								    position: relative;
-								    left: 500px;
-								    bottom: 35px;
-								    height: 20px;
-								    width: 50px;
-								">
-			<label class="switch">
- 	 <input type="checkbox">
- 	 <span class="slider round"></span>
-	</label>
-	</div>
+	<div> <p>항목 추가 허용</p>
+	<a href="javascript:shownow()"  style="
+    position: relative;
+    left: 480px;
+    bottom: 50px;
+">작성자만> </a>
 	
-	옵션 추가 설정<p>  
+<div id="seczone" style="
+    position: relative;
+    left: 550px;
+    bottom: 80px;
+"></div></div>
 	
-	<div id="wrap" style="
-								    position: relative;
-								    left: 500px;
-								    bottom: 35px;
-								    height: 20px;
-								    width: 50px;
-								">
-			<label class="switch">
- 	 <input type="checkbox">
- 	 <span class="slider round"></span>
-	</label>
-	</div>
+	
+	<div> <p>옵션 추가 설정</p>
+	<div class="button" style="
+    position: relative;
+    left: 550px;
+    bottom: 40px;
+    width: 20px;
+    height: 20px;
+">
+  <span>></span>
+</div>
+	
+<div id="optionadd" style="
+    position: relative;
+    left: 550px;
+    bottom: 80px;
+"></div>
+</div>
+	
+	
 
-				</div>
-				</div>
+		</div>
+		</div>
 		</div>
 			
 			<div class="row" style="
@@ -307,6 +493,111 @@ input:checked + .slider:before {
 	
 
 </div>
+<button class="close" style="
+    background: black;
+    position: relative;
+    right: 950px;
+    bottom: 900px;
+">
+  <div class="line"></div>
+  <div class="line"></div>
+</button>
+
+<div class="content">
+  <div style="
+    background: blanchedalmond;
+    width: 500px;
+    height: 500px;
+    position: relative;
+    top: 300px;
+    left: 70px;
+" id="optionlist">  
+
+<p style="
+    text-align: center;
+" >옵션 추가 설정</p>
+
+	<div> 
+	<p >참여자 선택</p>
+	<a href="javascript:showinhumen()"  id="inhumen" style="
+    position: relative;
+    left: 340px;
+    bottom: 37px;
+">프로젝트 참여자 전체 ></a>
+	
+<div id="inhumenlist" style="
+    position: relative;
+    width: 200px;
+    left: 500px;
+    bottom: 70px;
+"></div>
+</div>
+
+	
+
+	<div> 
+	<p >결과공개 설정</p>
+	<a href="javascript:showresultopen()"  id="resultopen" style="
+    position: relative;
+    left: 340px;
+    bottom: 37px;
+">투표 종료시(최종 결과 공개)></a>
+	
+<div id="resultopenlist" style="
+    position: relative;
+    width: 200px;
+    left: 500px;
+    bottom: 70px;
+"></div>
+</div>
+
+	<div> 
+	<p >실시간 알람받기</p>
+	
+	 <div id="enddatezone" style="
+    position: relative;
+    left: 130px;
+    bottom: 35px;
+    width: 300px;
+"> 
+<div id="enddatezone2"></div>
+	<div id="wrap" style="
+								    position: relative;
+								    left: 300px;				    
+								    height: 20px;
+								    width: 50px;
+								">
+
+	<label class="switch">
+ 	 <input type="checkbox" id="enddate">
+ 	 <span class="slider round"></span>
+	</label>
+	
+	</div></div> 
+	
+
+</div>
+
+<div> 
+	<p >최종 결과 공개 범위 설정</p>
+	<a href="javascript:showendresult()"  id="endresult" style="
+    position: relative;
+    left: 340px;
+    bottom: 37px;
+">프로젝트 참여자 전체 ></a>
+	
+<div id="endresultlist" style="
+    position: relative;
+    width: 200px;
+    left: 500px;
+    bottom: 70px;
+"></div>
+</div>
+
+
+</div>
+</div>
+
 </div>
 </div>
 </div>
@@ -320,7 +611,25 @@ input:checked + .slider:before {
 	
 	<script type="text/javascript">
 	
-	
+	function showinhumen(){
+		
+		var inhumenlist= $("#inhumenlist");
+		
+		
+		
+		let html =`
+			<div id="inhumenbox" style="
+			    background: beige;
+		    
+		">
+				<input type="radio" name="one" value="1" checked>프로젝트 참여자 전체<br>
+				<input type="radio" name="one" value="2">참여자 지정<br>
+				
+			</div>
+
+	`; 
+		inhumenlist.append(html);
+	}
 	
 	$("#goodadd").click(function(){
 		var goodslist = $("#goodlist");
@@ -341,8 +650,98 @@ input:checked + .slider:before {
 		goodslist.append(html);
 	});
 	
+	$("#enddate").click(function(){
+		
+		var enddatezone2 = $("#enddatezone2")
+		var enddate =$("#enddate").prop("checked");
+		if(enddate == true){
+			
+			let html=`
+			<div id="datawrap" style="
+			    position: relative;
+		   
+		    right: 30px;
+		">
+				<input type="date" namd="choicedate" id="datepicker">
+				<input type="time" namd="choicetime" id="datepicker">
+				<input type="radio" id="alarm" name="alarm" value="alarm" >
+				<div id="alerminfozone"></div>
+
+			</div>
+				`;
+			enddatezone2.append(html);
+			
+		}else{
+			enddatezone2.empty();
+		}
+	});
+	
+	$(document).on('click','#alarm',function(){
+		
+		var alerminfozone = $("#alerminfozone");
+		alerminfozone.empty();
+		let html =`
+			<select id = "alerminfo" size="1"  style="
+		    position: relative;
+	    left: 255px;
+	    bottom: 25px;
+	">
+
+		<option value ="30분전">30분 전 미리 알림</option>
+
+		</select>
+		`;
+		alerminfozone.append(html);
+	});
+	
+	function shownow(){
+		
+			var seczone = $("#seczone");
+			seczone.empty();
+			let html =`
+			<div id="secbox" style="
+			    background: beige;
+			">
+				<input type="radio" name="one" value="1" checked>작성자만<br>
+				<input type="radio" name="one" value="2">작성자 + 프로젝트 관리자<br>
+				<input type="radio" name="one" value="3">전체
+			</div>
+				
+		
+	`; 
+			seczone.append(html);
+
+			
+		
+		
+	}
 	
 	
+	$(document).ready(function() {
+		  $('.button').on('click', function() {
+			  
+			 let optionlist = $("#optionlist");
+			 
+	 
+			 let html=
+				`
+				
+				`;
+			 
+			 optionlist.append(html);
+		    $(this).toggleClass('active');
+		    $('.content').toggleClass('show');
+		    $('.close').toggleClass('open');
+		  });
+		  
+		  $('.close').on('click', function() {
+		    $(this).toggleClass('open');
+		 	$('.button').removeClass('active');
+		    $('.content').removeClass('show');
+		  });
+		});
+	
+
 	</script>
 
 
