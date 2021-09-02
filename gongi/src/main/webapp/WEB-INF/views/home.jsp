@@ -693,9 +693,9 @@ style="
 		var alerminfozone = $("#alerminfozone");
 		alerminfozone.empty();
 		let html =`
-			<select id = "alerminfo" size="1"  style="
+			<select id = "alerminfo" size="1" style="
 		    position: relative;
-		    left: 255px;
+		    left: 270px;
 		    bottom: 25px;
 		    width: 120px;
 	">
